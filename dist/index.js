@@ -11165,7 +11165,7 @@
       cursor.style.transform = `translate(${coords2.right - 2}px, ${coords2.top - 4}px)`;
     }
   });
-  var coords = view.coordsAtPos(0, -1);
+  var coords = view.coordsAtPos(1, -1);
   console.log(coords);
   cursor.style.transform = `translate(${coords.right - 2}px, ${coords.top - 4}px)`;
 })();

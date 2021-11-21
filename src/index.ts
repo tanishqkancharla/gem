@@ -42,15 +42,13 @@ const view = new EditorView<typeof schema>(main, {
     this.updateState(newState);
 
     const coords = this.coordsAtPos(newState.selection.anchor);
-    console.log(newState.selection);
     cursor.style.transform = `translate(${coords.right - 2}px, ${
       coords.top - 4
     }px)`;
   },
 });
 
-const coords = view.coordsAtPos(0, -1);
-console.log(coords);
+const coords = view.coordsAtPos(1, -1);
 cursor.style.transform = `translate(${coords.right - 2}px, ${
   coords.top - 4
 }px)`;

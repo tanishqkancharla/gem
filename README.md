@@ -5,3 +5,4 @@ A performant and simple plain text editor, created with Prosemirror. The design 
 To do:
 
 - Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting.
+- Potentially replace prosemirror-view to be more lightweight and integrate cursor selection "natively".

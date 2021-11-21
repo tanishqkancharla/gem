@@ -38,4 +38,4 @@ export const marks = {};
 //
 // To reuse elements from this schema, extend or read from its
 // `spec.nodes` and `spec.marks` [properties](#model.Schema.spec).
-export const schema = new Schema({ nodes, marks });
+export const schema = new Schema({ nodes, marks } as const);

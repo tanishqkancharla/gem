@@ -1,0 +1,55 @@
+html {
+  background-color: hsl(50 6% 10%);
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  padding-top: 4rem;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 28px;
+  border-radius: 4px;
+  background-color: #17d49b;
+  transform: translate(0, 0);
+  transition-duration: 80ms;
+}
+
+.ProseMirror {
+  font-family: SFMono-Regular, ui-monospace, Menlo, monospace;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 28px;
+  caret-color: transparent;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+::selection {
+  background-color: rgba(23, 212, 155, 0.4);
+}
+
+::-moz-selection {
+  background-color: rgba(23, 212, 155, 0.4);
+}
+
+.ProseMirror p {
+  margin-top: 0;
+  margin-bottom: 0;
+}

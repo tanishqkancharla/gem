@@ -1,4 +1,4 @@
-![Dark black card with centered text "Editor" set in striking green](img/card.png)
+![Dark black card with centered text "Editor" set in striking green](dist/card.png)
 
 A performant and simple plain text editor, created with Prosemirror. The design is very inpsired by Paco Coursey's ["Writer"](https://github.com/pacocoursey/writer).
 

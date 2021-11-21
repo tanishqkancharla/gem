@@ -1,6 +1,13 @@
+:root {
+  --bg-color: #121416;
+  --cursor-color: #17d49b;
+  --fg-color: white;
+  --selection-bg-color: rgba(23, 212, 155, 0.4);
+}
+
 html {
-  background-color: hsl(50 6% 10%);
-  color: white;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,7 +37,7 @@ main {
   width: 4px;
   height: 28px;
   border-radius: 4px;
-  background-color: #17d49b;
+  background-color: var(--cursor-color);
   transform: translate(0, 0);
   transition-duration: 80ms;
 }
@@ -49,11 +56,11 @@ main {
 }
 
 ::selection {
-  background-color: rgba(23, 212, 155, 0.4);
+  background-color: var(--selection-bg-color);
 }
 
 ::-moz-selection {
-  background-color: rgba(23, 212, 155, 0.4);
+  background-color: var(--selection-bg-color);
 }
 
 .ProseMirror p {

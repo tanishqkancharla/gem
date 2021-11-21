@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "mkdir -p dist && cp public/* dist && esbuild src/index.ts --bundle --sourcemap --outfile=dist/index.js && npx serve -l 3000 dist",
-    "build": "cp public/* dist && esbuild src/index.ts --bundle --minify --outfile=dist/index.js",
+    "build": "mkdir -p dist && cp public/* dist && esbuild src/index.ts --bundle --minify --outfile=dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

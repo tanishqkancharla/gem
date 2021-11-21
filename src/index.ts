@@ -43,12 +43,12 @@ const view = new EditorView<typeof schema>(main, {
 
     const coords = this.coordsAtPos(newState.selection.anchor);
     cursor.style.transform = `translate(${coords.right - 2}px, ${
-      coords.top - 4
+      window.scrollY + coords.top - 4
     }px)`;
   },
 });
 
 const coords = view.coordsAtPos(1, -1);
 cursor.style.transform = `translate(${coords.right - 2}px, ${
-  coords.top - 4
+  window.scrollY + coords.top - 4
 }px)`;

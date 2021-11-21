@@ -11161,12 +11161,10 @@
       const newState = this.state.apply(transaction);
       this.updateState(newState);
       const coords2 = this.coordsAtPos(newState.selection.anchor);
-      console.log(newState.selection);
-      cursor.style.transform = `translate(${coords2.right - 2}px, ${coords2.top - 4}px)`;
+      cursor.style.transform = `translate(${coords2.right - 2}px, ${window.scrollY + coords2.top - 4}px)`;
     }
   });
   var coords = view.coordsAtPos(1, -1);
-  console.log(coords);
-  cursor.style.transform = `translate(${coords.right - 2}px, ${coords.top - 4}px)`;
+  cursor.style.transform = `translate(${coords.right - 2}px, ${window.scrollY + coords.top - 4}px)`;
 })();
 //# sourceMappingURL=index.js.map

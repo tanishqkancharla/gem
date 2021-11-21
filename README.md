@@ -4,6 +4,7 @@ A performant and simple plain text editor, created with Prosemirror. The design 
 
 To do (in priority):
 
+- Selection (double click for sentence, triple for paragraph).
 - Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting.
 - Fix sentence-wrapping bug where it overflows sometimes (unreproducible as of yet).
 - Allow theming/setting the color variables in UI.

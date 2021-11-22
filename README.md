@@ -5,13 +5,14 @@ A performant and simple plain text editor, created with Prosemirror. The design 
 The goods:
 
 - Fairly lightweight, around 65.5 kB for the whole website.
-  - Can do a fair bit better here...don't need some of the other prosemirror plugins.
-- Undo/redo
-- Basic inline markdown (bold, code, italic), although they can be a little buggy
+  - Can do a fair bit better here...some of the prosemirror modules can be stripped for this purpose.
+- Undo/redo.
+- Arrow key movement.
+- Basic inline markdown (bold, code, italic), although they can be a little buggy.
 - JS source is small and readable.
 - CSS source is small and readable. Uses CSS variables for styling.
-- Accessible and semantic
-- Pretty (at least I think so, lol)
+- Accessible and semantic. Each paragraph becomes a `p` tag, each inline style is appropriately styled.
+- Pretty (at least I think so, lol).
 
 To run: `npm run dev`. It copies the `public` directory into `dist` and uses esbuild to bundle the js.
 

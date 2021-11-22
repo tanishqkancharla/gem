@@ -1,7 +1,5 @@
 import { Schema } from "prosemirror-model";
 
-const pDOM = ["p", 0] as const;
-
 // :: Object
 // [Specs](#model.NodeSpec) for the nodes defined in this schema.
 export const nodes = {
@@ -17,7 +15,7 @@ export const nodes = {
     group: "block",
     parseDOM: [{ tag: "p" }],
     toDOM() {
-      return pDOM;
+      return ["p", 0] as const;
     },
   },
 

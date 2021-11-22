@@ -1,6 +1,5 @@
-import { Command, Keymap } from "prosemirror-commands";
+import { Keymap } from "prosemirror-commands";
 import { InputRule, inputRules } from "prosemirror-inputrules";
-import { Plugin } from "prosemirror-state";
 import { schema } from "./schema";
 
 // WIP plugin to handle weird edge cases of the bold input rule

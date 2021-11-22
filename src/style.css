@@ -1,3 +1,5 @@
+@import "./prosemirror.css";
+
 :root {
   --bg-color: #121416;
   --accent-color: #17d49b;

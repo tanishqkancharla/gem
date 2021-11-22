@@ -1,12 +1,16 @@
 :root {
   --bg-color: #121416;
-  --cursor-color: #17d49b;
-  --fg-color: white;
+  --accent-color: #17d49b;
+  --fg-color: #efefef;
   --selection-bg-color: rgba(23, 212, 155, 0.4);
+  --cursor-animation-duration: 80ms;
+  --font: SFMono-Regular, ui-monospace, Menlo, monospace;
 }
 
 html {
   background-color: var(--bg-color);
+  /* Mobile selection highlight */
+  -webkit-tap-highlight-color: var(--selection-bg-color);
   color: var(--fg-color);
   height: 100vh;
   display: flex;
@@ -14,14 +18,25 @@ html {
 }
 
 body {
+  scrollbar-color: var(--accent-color);
+  margin: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 2rem;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 6px;
+  border: 2px solid var(--accent-color);
 }
 
 main {
-  padding: 4rem 0;
+  padding: 4rem 2rem;
   flex: 1 1 auto;
   width: 100%;
   max-width: 40rem;
@@ -37,15 +52,15 @@ main {
   width: 4px;
   height: 28px;
   border-radius: 4px;
-  background-color: var(--cursor-color);
+  background-color: var(--accent-color);
   transform: translate(0, 0);
-  transition-duration: 80ms;
+  transition-duration: var(--cursor-animation-duration);
+  transition-timing-function: ease-in-out;
 }
 
 .ProseMirror {
   flex: 1 1 auto;
-  font-family: SFMono-Regular, ui-monospace, Menlo, monospace;
-  font-weight: 400;
+  font-family: var(--font);
   font-size: 1rem;
   line-height: 28px;
   caret-color: transparent;
@@ -66,4 +81,9 @@ main {
 .ProseMirror p {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.ProseMirror p code {
+  color: #a0a0a0;
+  font: var(--font);
 }

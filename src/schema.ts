@@ -28,7 +28,38 @@ export const nodes = {
 };
 
 // :: Object [Specs](#model.MarkSpec) for the marks in the schema.
-export const marks = {};
+export const marks = {
+  italic: {
+    parseDOM: [
+      { tag: "i" },
+      { tag: "em" },
+      { style: "font-style", getAttrs: (value) => value == "italic" && null },
+    ],
+    toDOM(): ["em"] {
+      return ["em"];
+    },
+  },
+
+  bold: {
+    parseDOM: [
+      { tag: "b" },
+      { tag: "strong" },
+      {
+        style: "font-weight",
+        getAttrs: (value) => /^(bold(er)?|[5-9]\d{2,})$/.test(value) && null,
+      },
+    ],
+    toDOM(): ["strong"] {
+      return ["strong"];
+    },
+  },
+  code: {
+    parseDOM: [{ tag: "code" }],
+    toDOM(): ["code"] {
+      return ["code"];
+    },
+  },
+};
 
 // :: Schema
 // This schema roughly corresponds to the document schema used by

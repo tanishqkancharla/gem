@@ -1,7 +1,5 @@
 import { Schema } from "prosemirror-model";
 
-const pDOM = ["p", 0] as const;
-
 // :: Object
 // [Specs](#model.NodeSpec) for the nodes defined in this schema.
 export const nodes = {
@@ -17,7 +15,22 @@ export const nodes = {
     group: "block",
     parseDOM: [{ tag: "p" }],
     toDOM() {
-      return pDOM;
+      return ["p", 0] as const;
+    },
+  },
+
+  // :: NodeSpec A code listing. Disallows marks or non-text inline
+  // nodes by default. Represented as a `<pre>` element with a
+  // `<code>` element inside of it.
+  code_block: {
+    content: "text*",
+    marks: "",
+    group: "block",
+    code: true,
+    defining: true,
+    parseDOM: [{ tag: "pre", preserveWhitespace: "full" } as const],
+    toDOM() {
+      return ["pre", ["code", 0]] as const;
     },
   },
 
@@ -62,11 +75,6 @@ export const marks = {
 };
 
 // :: Schema
-// This schema roughly corresponds to the document schema used by
-// [CommonMark](http://commonmark.org/), minus the list elements,
-// which are defined in the [`prosemirror-schema-list`](#schema-list)
-// module.
-//
 // To reuse elements from this schema, extend or read from its
 // `spec.nodes` and `spec.marks` [properties](#model.Schema.spec).
 export const schema = new Schema({ nodes, marks } as const);

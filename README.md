@@ -4,7 +4,7 @@ A performant and simple plain text editor, created with Prosemirror. The design 
 
 The goods:
 
-- Fairly lightweight, around 200 kB for the whole website.
+- Fairly lightweight, around 65.5 kB for the whole website.
   - Can do a fair bit better here...don't need some of the other prosemirror plugins.
 - Undo/redo
 - Basic inline markdown (bold, code, italic), although they can be a little buggy

@@ -40,16 +40,25 @@ function initCursor(): HTMLDivElement {
 }
 
 const cursor = initCursor();
+let cursorTimeout;
+
+function deactivateCursor() {
+  cursor.classList.add("inactive");
+}
 
 const view = new EditorView<typeof schema>(main, {
   state,
   dispatchTransaction(this, transaction) {
     let newState = this.state.apply(transaction);
     if (newState.selection.empty && newState.selection.anchor == 1) {
-      // Kind of a hack fix to remove all formatting when at the beginning of a document
+      // Kind of a hack fix to remove all marks when at the beginning of a document
       newState = newState.apply(newState.tr.setStoredMarks([]));
     }
     this.updateState(newState);
+
+    cursor.classList.remove("inactive");
+    clearTimeout(cursorTimeout);
+    cursorTimeout = setTimeout(deactivateCursor, 6000);
 
     const coords = this.coordsAtPos(newState.selection.anchor);
     cursor.style.transform = `translate(${coords.right - 2}px, ${

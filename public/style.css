@@ -49,13 +49,20 @@ main {
   position: absolute;
   top: 0;
   left: 0;
+
   width: 4px;
   height: 28px;
+
+  opacity: 1;
   border-radius: 4px;
   background-color: var(--accent-color);
-  transform: translate(0, 0);
-  transition-duration: var(--cursor-animation-duration);
-  transition-timing-function: ease-in-out;
+
+  transform: translate(4rem, 2rem);
+  transition: transform var(--cursor-animation-duration), opacity 0.8s;
+}
+
+.cursor.inactive {
+  opacity: 0.5;
 }
 
 .ProseMirror {

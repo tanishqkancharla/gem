@@ -58,11 +58,12 @@ main {
   background-color: var(--accent-color);
 
   transform: translate(4rem, 2rem);
-  transition: transform var(--cursor-animation-duration), opacity 0.8s;
+  transition: transform var(--cursor-animation-duration), opacity 0.1s;
 }
 
 .cursor.inactive {
   opacity: 0.5;
+  transition: opacity 0.5s;
 }
 
 .ProseMirror {

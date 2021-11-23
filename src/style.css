@@ -34,13 +34,11 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: var(--accent-color);
   border-radius: 6px;
-  border: 2px solid var(--accent-color);
 }
 
 main {
   padding: 4rem 2rem;
   flex: 1 1 auto;
-  width: 100%;
   max-width: 40rem;
   margin: 0 auto;
   display: flex;

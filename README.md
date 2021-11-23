@@ -14,7 +14,7 @@ The goods:
 - Accessible and semantic. Each paragraph becomes a `p` tag, each inline style is appropriately styled.
 - Pretty (at least I think so, lol).
 
-To run: `npm run dev`. It copies the `public` directory into `dist` and uses esbuild to bundle the js.
+To run: `npm run dev`. The build step uses `estrella` to bundle/watch and `serve` for serving.
 
 Please hit me up on [twitter](https://twitter.com/moonriseTK) if you like it or wanna see something added!
 

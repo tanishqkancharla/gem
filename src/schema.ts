@@ -1,9 +1,5 @@
 import { Fragment, MarkSpec, Schema } from "prosemirror-model";
 
-interface ParagraphType {
-  type: "base" | "heading";
-}
-
 // :: Object
 // [Specs](#model.NodeSpec) for the nodes defined in this schema.
 export const nodes = {
@@ -18,7 +14,7 @@ export const nodes = {
     content: "inline*",
     attrs: { type: { default: "base" } },
     group: "block",
-    parseDOM: [{ tag: "p" }],
+    parseDOM: [{ tag: "p", attrs: { type: "base" } }],
     toDOM() {
       return ["p", 0] as const;
     },
@@ -30,19 +26,37 @@ export const nodes = {
   },
 };
 
-interface Marks {
-  italic: MarkSpec;
-  bold: MarkSpec;
-  code: MarkSpec;
-}
+const getDelimContent =
+  (delimiter) => (node: Node, schema: Schema<any, any>) => {
+    if (
+      node.textContent.startsWith(delimiter) &&
+      node.textContent.endsWith(delimiter)
+    ) {
+      return Fragment.from(schema.text(node.textContent));
+    } else {
+      return Fragment.from(
+        schema.text(`${delimiter}${node.textContent}${delimiter}`)
+      );
+    }
+  };
 
 // :: Object [Specs](#model.MarkSpec) for the marks in the schema.
-export const marks: Marks = {
+export const marks = {
   italic: {
     parseDOM: [
-      { tag: "i" },
-      { tag: "em" },
-      { style: "font-style", getAttrs: (value) => value == "italic" && null },
+      {
+        tag: "i",
+        getContent: getDelimContent("_"),
+      },
+      {
+        tag: "em",
+        getContent: getDelimContent("_"),
+      },
+      {
+        style: "font-style",
+        getAttrs: (value) => value == "italic" && null,
+        getContent: getDelimContent("_"),
+      },
     ],
     toDOM(): ["em"] {
       return ["em"];
@@ -51,15 +65,19 @@ export const marks: Marks = {
 
   bold: {
     parseDOM: [
-      { tag: "b" },
-      { tag: "strong" },
+      {
+        tag: "b",
+        getContent: getDelimContent("*"),
+      },
+      {
+        tag: "strong",
+        getContent: getDelimContent("*"),
+      },
       {
         style: "font-weight",
         getAttrs: (value) =>
           /^(bold(er)?|[5-9]\d{2,})$/.test(value as string) && null,
-        getContent: (node, schema) => {
-          return Fragment.from(schema.text(`*${node.textContent}*`));
-        },
+        getContent: getDelimContent("*"),
       },
     ],
     toDOM(): ["strong"] {
@@ -67,12 +85,22 @@ export const marks: Marks = {
     },
   } as MarkSpec,
   code: {
-    parseDOM: [{ tag: "code" }],
+    parseDOM: [
+      {
+        tag: "code",
+        getContent: getDelimContent("`"),
+      },
+    ],
     toDOM(): ["code"] {
       return ["code"];
     },
   },
 };
+
+type EditorSchema = Schema<
+  "doc" | "paragraph" | "text",
+  "italic" | "bold" | "code"
+>;
 
 // :: Schema
 // This schema roughly corresponds to the document schema used by
@@ -82,4 +110,7 @@ export const marks: Marks = {
 //
 // To reuse elements from this schema, extend or read from its
 // `spec.nodes` and `spec.marks` [properties](#model.Schema.spec).
-export const schema = new Schema({ nodes, marks } as const);
+export const schema: EditorSchema = new Schema({
+  nodes,
+  marks,
+} as any);

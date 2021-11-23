@@ -6,8 +6,9 @@ import { undo, redo, history } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { baseKeymap } from "prosemirror-commands";
 import { markdownInputRules, markdownKeyBindings } from "./markdown";
+import { Cursor } from "./cursor";
 
-const main = document.body.children[0];
+export const main = document.body.children[0];
 
 const state = EditorState.create<typeof schema>({
   doc: Node.fromJSON(schema, {
@@ -32,19 +33,7 @@ const state = EditorState.create<typeof schema>({
   ],
 });
 
-function initCursor(): HTMLDivElement {
-  const cursor = document.createElement("div");
-  cursor.classList.add("cursor");
-  main.appendChild(cursor);
-  return cursor;
-}
-
-const cursor = initCursor();
-let cursorTimeout;
-
-function deactivateCursor() {
-  cursor.classList.add("inactive");
-}
+const cursor = new Cursor();
 
 const view = new EditorView<typeof schema>(main, {
   state,
@@ -56,18 +45,13 @@ const view = new EditorView<typeof schema>(main, {
     }
     this.updateState(newState);
 
-    cursor.classList.remove("inactive");
-    clearTimeout(cursorTimeout);
-    cursorTimeout = setTimeout(deactivateCursor, 10000);
-
-    const coords = this.coordsAtPos(newState.selection.anchor);
-    cursor.style.transform = `translate(${coords.right - 2}px, ${
-      window.scrollY + coords.top - 4
-    }px)`;
+    cursor.resetTimeout();
+    cursor.repositionToViewAnchor(this);
   },
 });
 
-const coords = view.coordsAtPos(1, -1);
-cursor.style.transform = `translate(${coords.right - 2}px, ${
-  window.scrollY + coords.top - 4
-}px)`;
+window.addEventListener("resize", () => {
+  cursor.repositionToViewAnchor(view);
+});
+
+cursor.repositionToViewAnchor(view);

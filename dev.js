@@ -8,5 +8,5 @@ build({
   bundle: true,
   sourcemap: true,
   minify: false,
-  run: "npx serve -l 3000 dist",
+  run: "serve -n -l 3000 dist",
 });

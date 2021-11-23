@@ -58,7 +58,7 @@ const view = new EditorView<typeof schema>(main, {
 
     cursor.classList.remove("inactive");
     clearTimeout(cursorTimeout);
-    cursorTimeout = setTimeout(deactivateCursor, 6000);
+    cursorTimeout = setTimeout(deactivateCursor, 10000);
 
     const coords = this.coordsAtPos(newState.selection.anchor);
     cursor.style.transform = `translate(${coords.right - 2}px, ${

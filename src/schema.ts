@@ -1,5 +1,9 @@
 import { Schema } from "prosemirror-model";
 
+interface ParagraphType {
+  type: "base" | "heading";
+}
+
 // :: Object
 // [Specs](#model.NodeSpec) for the nodes defined in this schema.
 export const nodes = {
@@ -12,6 +16,7 @@ export const nodes = {
   // as a `<p>` element.
   paragraph: {
     content: "inline*",
+    attrs: { type: { default: "base" } },
     group: "block",
     parseDOM: [{ tag: "p" }],
     toDOM() {

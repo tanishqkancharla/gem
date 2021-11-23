@@ -45,7 +45,6 @@ const view = new EditorView<typeof schema>(main, {
     }
     this.updateState(newState);
 
-    console.log(newState.selection);
     cursor.resetTimeout();
     cursor.repositionToViewAnchor(this);
   },

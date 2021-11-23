@@ -4,9 +4,9 @@
   "description": "A plain text editor, built with Prosemirror",
   "main": "index.js",
   "scripts": {
-    "clear": "mkdir -p dist && rm -rf dist/* && cp public/* dist",
-    "dev": "npm run clear && esbuild src/index.ts src/style.css --bundle --sourcemap --outdir=dist && npx serve -l 3000 dist",
-    "build": "npm run clear && esbuild src/index.ts src/style.css --bundle --minify --outdir=dist",
+    "reset": "mkdir -p dist && rm -rf dist/* && cp public/* dist",
+    "dev": "npm run reset && esbuild src/index.ts src/style.css --bundle --sourcemap --outdir=dist && npx serve -l 3000 dist",
+    "build": "npm run reset && esbuild src/index.ts src/style.css --bundle --minify --outdir=dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

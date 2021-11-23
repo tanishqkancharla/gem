@@ -1,5 +1,16 @@
 @import "./prosemirror.css";
 
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ebgaramond/v19/~ChoKC0VCIEdhcmFtb25kOgsI9NCduwcVAADIQxAKIAMqBAgAEAE4AQ==.woff)
+    format("woff");
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
 :root {
   --bg-color: #121416;
   --accent-color: #17d49b;
@@ -35,6 +46,21 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--accent-color);
   border-radius: 6px;
   border: 2px solid var(--accent-color);
+}
+
+.title {
+  font-family: "EB Garamond", serif;
+  color: var(--fg-color);
+  opacity: 0.4;
+  padding: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+  }
 }
 
 main {

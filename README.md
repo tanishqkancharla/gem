@@ -20,14 +20,17 @@ Please hit me up on [twitter](https://twitter.com/moonriseTK) if you like it or 
 
 To do (in priority):
 
-- Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting.
+- Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting. Just attach attributes to the para tag instead of actually making different blocks. That'll make things easier.
   - Headings
   - Bullet lists
   - Numbered lists
+  - Code block
+- Use estrella instead of the jank im doing
 - Cursor shape changes when marks are applied (fatter when bold, slant when italic, rectangle when code)
 - Default word-selection (when you start highlighting, it defaults to selecting the whole word your cursor is on).
 - Fix sentence-wrapping bug where it overflows sometimes (unreproducible as of yet, unless you paste in a huge text).
 - "Bookmarks" to leave your cursor in a position and travel back to.
+- Have an /about page that gets rendered into the editor
 
 Things I'm thinking of adding:
 
@@ -35,3 +38,4 @@ Things I'm thinking of adding:
 - Cursor fades and disappears after a while of inactivity?
 - Allow theming/setting the color variables in UI?
 - Potentially replace prosemirror-view to be more lightweight and integrate cursor and selection "natively"?
+- Urls to share?

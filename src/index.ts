@@ -7,7 +7,7 @@ import { keymap } from "prosemirror-keymap";
 import { baseKeymap } from "prosemirror-commands";
 import { markdownInputRules, markdownKeyBindings } from "./markdown";
 
-const main = document.body.children[0];
+const main = document.body.children[1];
 
 const state = EditorState.create<typeof schema>({
   doc: Node.fromJSON(schema, {
@@ -49,6 +49,7 @@ function deactivateCursor() {
 const view = new EditorView<typeof schema>(main, {
   state,
   dispatchTransaction(this, transaction) {
+    // Transactions should be dispatched in 60 fps =>
     let newState = this.state.apply(transaction);
     if (newState.selection.empty && newState.selection.anchor == 1) {
       // Kind of a hack fix to remove all marks when at the beginning of a document
@@ -58,7 +59,7 @@ const view = new EditorView<typeof schema>(main, {
 
     cursor.classList.remove("inactive");
     clearTimeout(cursorTimeout);
-    cursorTimeout = setTimeout(deactivateCursor, 6000);
+    cursorTimeout = setTimeout(deactivateCursor, 10000);
 
     const coords = this.coordsAtPos(newState.selection.anchor);
     cursor.style.transform = `translate(${coords.right - 2}px, ${

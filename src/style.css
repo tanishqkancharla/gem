@@ -9,9 +9,15 @@
   --font: SFMono-Regular, ui-monospace, Menlo, monospace;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   background-color: var(--bg-color);
-  /* Mobile selection highlight */
+  /* Mobile selection highlight (that doesn't work) */
   -webkit-tap-highlight-color: var(--selection-bg-color);
   color: var(--fg-color);
   height: 100vh;
@@ -20,6 +26,7 @@ html {
 }
 
 body {
+  -webkit-font-smoothing: antialiased;
   scrollbar-color: var(--accent-color);
   margin: 0;
   flex: 1;

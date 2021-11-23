@@ -5,8 +5,7 @@ build({
   entry: ["./src/index.ts", "./src/style.css"],
   outdir: "dist",
   watch: true,
-  bundle: true,
   sourcemap: true,
   minify: false,
-  run: "serve -n -l 3000 dist",
+  run: "npx serve -n -l 3000 dist",
 });

@@ -40,18 +40,25 @@ const view = new EditorView<typeof schema>(main, {
   dispatchTransaction(this, transaction) {
     let newState = this.state.apply(transaction);
     if (newState.selection.empty && newState.selection.anchor == 1) {
-      // Kind of a hack fix to remove all marks when at the beginning of a document
+      // Kind of a hack fix to remove all marks when at the beginning of a empty document
       newState = newState.apply(newState.tr.setStoredMarks([]));
     }
     this.updateState(newState);
 
+    console.log(newState.selection);
     cursor.resetTimeout();
     cursor.repositionToViewAnchor(this);
   },
 });
 
+view.root.addEventListener("focus", () => cursor.resetTimeout(), true);
+
+view.root.addEventListener("blur", () => cursor.deactivate(), true);
+
 window.addEventListener("resize", () => {
   cursor.repositionToViewAnchor(view);
 });
+
+view.focus();
 
 cursor.repositionToViewAnchor(view);

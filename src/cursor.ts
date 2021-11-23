@@ -12,12 +12,21 @@ export class Cursor {
     main.appendChild(this.#el);
   }
 
-  resetTimeout() {
+  activate() {
     this.#el.classList.remove("inactive");
+  }
+
+  deactivate() {
+    this.#el.classList.add("inactive");
+  }
+
+  resetTimeout() {
+    this.activate();
     clearTimeout(this.#cursorTimeoutFn);
-    const cursor = this;
     this.#cursorTimeoutFn = setTimeout(
-      () => cursor.#el.classList.add("inactive"),
+      function () {
+        this.deactivate();
+      }.bind(this),
       this.#cursorTimeout
     );
   }
@@ -30,7 +39,8 @@ export class Cursor {
   }
 
   repositionToViewAnchor(view: EditorView) {
-    const coords = view.coordsAtPos(view.state.selection.anchor);
+    // If you do an all selection, the anchor gets set to 0...for some reason :/
+    const coords = view.coordsAtPos(Math.max(view.state.selection.anchor, 1));
     this.reposition(coords.right, coords.top);
   }
 }

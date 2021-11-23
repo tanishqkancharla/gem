@@ -27,10 +27,10 @@ export const nodes = {
 };
 
 const getDelimContent =
-  (delimiter) => (node: Node, schema: Schema<any, any>) => {
+  (delimiter: string) => (node: Node, schema: Schema<any, any>) => {
     if (
-      node.textContent.startsWith(delimiter) &&
-      node.textContent.endsWith(delimiter)
+      node.textContent?.startsWith(delimiter) &&
+      node.textContent?.endsWith(delimiter)
     ) {
       return Fragment.from(schema.text(node.textContent));
     } else {
@@ -54,7 +54,7 @@ export const marks = {
       },
       {
         style: "font-style",
-        getAttrs: (value) => value == "italic" && null,
+        getAttrs: (value: string) => value == "italic" && null,
         getContent: getDelimContent("_"),
       },
     ],

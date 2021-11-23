@@ -4,7 +4,7 @@ import { main } from "./index";
 export class Cursor {
   #el: HTMLDivElement;
   #cursorTimeout = 10000;
-  #cursorTimeoutFn: number;
+  #cursorTimeoutFn: number = 0;
 
   constructor() {
     this.#el = document.createElement("div");
@@ -24,9 +24,7 @@ export class Cursor {
     this.activate();
     clearTimeout(this.#cursorTimeoutFn);
     this.#cursorTimeoutFn = setTimeout(
-      function () {
-        this.deactivate();
-      }.bind(this),
+      () => this.deactivate(),
       this.#cursorTimeout
     );
   }

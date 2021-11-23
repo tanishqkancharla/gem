@@ -1,4 +1,4 @@
-import { Schema } from "prosemirror-model";
+import { Fragment, MarkSpec, Schema } from "prosemirror-model";
 
 interface ParagraphType {
   type: "base" | "heading";
@@ -30,8 +30,14 @@ export const nodes = {
   },
 };
 
+interface Marks {
+  italic: MarkSpec;
+  bold: MarkSpec;
+  code: MarkSpec;
+}
+
 // :: Object [Specs](#model.MarkSpec) for the marks in the schema.
-export const marks = {
+export const marks: Marks = {
   italic: {
     parseDOM: [
       { tag: "i" },
@@ -49,13 +55,17 @@ export const marks = {
       { tag: "strong" },
       {
         style: "font-weight",
-        getAttrs: (value) => /^(bold(er)?|[5-9]\d{2,})$/.test(value) && null,
+        getAttrs: (value) =>
+          /^(bold(er)?|[5-9]\d{2,})$/.test(value as string) && null,
+        getContent: (node, schema) => {
+          return Fragment.from(schema.text(`*${node.textContent}*`));
+        },
       },
     ],
     toDOM(): ["strong"] {
       return ["strong"];
     },
-  },
+  } as MarkSpec,
   code: {
     parseDOM: [{ tag: "code" }],
     toDOM(): ["code"] {

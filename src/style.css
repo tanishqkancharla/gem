@@ -1,15 +1,5 @@
 @import "./prosemirror.css";
-
-@font-face {
-  font-family: "EB Garamond";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v19/~ChoKC0VCIEdhcmFtb25kOgsI9NCduwcVAADIQxAKIAMqBAgAEAE4AQ==.woff)
-    format("woff");
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
-    U+FE2E-FE2F;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 :root {
   --bg-color: #121416;
@@ -20,9 +10,15 @@
   --font: SFMono-Regular, ui-monospace, Menlo, monospace;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   background-color: var(--bg-color);
-  /* Mobile selection highlight */
+  /* Mobile selection highlight (that doesn't work) */
   -webkit-tap-highlight-color: var(--selection-bg-color);
   color: var(--fg-color);
   height: 100vh;
@@ -31,6 +27,7 @@ html {
 }
 
 body {
+  -webkit-font-smoothing: antialiased;
   scrollbar-color: var(--accent-color);
   margin: 0;
   flex: 1;
@@ -45,11 +42,10 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: var(--accent-color);
   border-radius: 6px;
-  border: 2px solid var(--accent-color);
 }
 
 .title {
-  font-family: "EB Garamond", serif;
+  font-family: "Playfair Display", serif;
   color: var(--fg-color);
   opacity: 0.4;
   padding: 2rem;
@@ -66,7 +62,7 @@ body::-webkit-scrollbar-thumb {
 main {
   padding: 4rem 2rem;
   flex: 1 1 auto;
-  width: 100%;
+  width: 80%;
   max-width: 40rem;
   margin: 0 auto;
   display: flex;

@@ -9,7 +9,7 @@ import { Step } from "prosemirror-transform";
 import { markdownInputRules, markdownKeyBindings } from "./markdown";
 import { Cursor } from "./cursor";
 import { initalContent } from "./initial";
-import { test } from "./tests";
+import { tests } from "./tests";
 
 export const main = document.querySelector("main")!;
 
@@ -31,11 +31,6 @@ const state = EditorState.create<typeof schema>({
 
 const cursor = new Cursor();
 
-if (TEST) {
-  window.times = [];
-  window.transactions = [];
-}
-
 const view = new EditorView<typeof schema>(main, {
   state,
   dispatchTransaction(this, transaction) {
@@ -52,10 +47,10 @@ const view = new EditorView<typeof schema>(main, {
     cursor.resetTimeout();
     cursor.repositionToViewAnchor(this);
     if (TEST) {
-      window.times.push(performance.measure("tr", "tr-begin"));
-      window.transactions.push({
-        steps: transaction.steps.map((x) => x.toJSON()),
-      });
+      performance.measure("tr", "tr-begin");
+      // window.transactions.push({
+      //   steps: transaction.steps.map((x) => x.toJSON()),
+      // });
     }
   },
 });
@@ -74,16 +69,18 @@ cursor.repositionToViewAnchor(view);
 
 if (TEST) {
   let _state = state;
-  test.map((x) => {
-    const tr = _state.tr;
-    x.steps.map((s) => tr.step(Step.fromJSON(schema, s)));
-    view.dispatch(tr);
-    _state = view.state;
-  });
+  tests.map((test) =>
+    test.map((x) => {
+      const tr = _state.tr;
+      x.steps.map((s) => tr.step(Step.fromJSON(schema, s)));
+      view.dispatch(tr);
+      _state = view.state;
+    })
+  );
 
+  const times = performance.getEntriesByType("measure");
   console.log(
     "AVERAGE TRANSACTION TIME: ",
-    window.times.map((x) => x.duration).reduce((a, b) => a + b) /
-      window.times.length
+    times.map((x) => x.duration).reduce((a, b) => a + b) / times.length
   );
 }

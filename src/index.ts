@@ -7,34 +7,13 @@ import { keymap } from "prosemirror-keymap";
 import { baseKeymap } from "prosemirror-commands";
 import { markdownInputRules, markdownKeyBindings } from "./markdown";
 import { Cursor } from "./cursor";
+import { initalContent } from "./initial";
 
-export const main = document.body.children[0];
+export const main = document.querySelector("main")!;
 
-const welcomes = [
-  "What's on your mind?",
-  "Hey, welcome to Editor :)",
-  "Hello, hello!",
-  "Why, welcome.",
-  "A long, long time ago...",
-  "Go ahead, try me >:)",
-  "Just type it out.",
-];
-
+// Initialize state, set up plugins
 const state = EditorState.create<typeof schema>({
-  doc: Node.fromJSON(schema, {
-    type: "doc",
-    content: [
-      {
-        type: "paragraph",
-        content: [
-          {
-            type: "text",
-            text: welcomes[Math.floor(Math.random() * welcomes.length)],
-          },
-        ],
-      },
-    ],
-  }),
+  doc: Node.fromJSON(schema, initalContent),
   schema,
   plugins: [
     history(),
@@ -53,6 +32,7 @@ const cursor = new Cursor();
 const view = new EditorView<typeof schema>(main, {
   state,
   dispatchTransaction(this, transaction) {
+    // Transactions should be dispatched in 60 fps =>
     let newState = this.state.apply(transaction);
     if (newState.selection.empty && newState.selection.anchor == 1) {
       // Kind of a hack fix to remove all marks when at the beginning of a empty document

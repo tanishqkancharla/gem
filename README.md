@@ -20,10 +20,11 @@ Please hit me up on [twitter](https://twitter.com/moonriseTK) if you like it or 
 
 To do (in priority):
 
-- Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting.
+- Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting. Just attach attributes to the para tag instead of actually making different blocks. That'll make things easier.
   - Headings
   - Bullet lists
   - Numbered lists
+  - Code block
 - Cursor shape changes when marks are applied (fatter when bold, slant when italic, rectangle when code)
 - Default word-selection (when you start highlighting, it defaults to selecting the whole word your cursor is on).
 - Fix sentence-wrapping bug where it overflows sometimes (unreproducible as of yet, unless you paste in a huge text).
@@ -32,6 +33,8 @@ To do (in priority):
 Things I'm thinking of adding:
 
 - Table of contents generated from the headings for easy navigation?
-- Cursor fades and disappears after a while of inactivity?
+- Highlight and animate selection through 3 divs: one on bottom to beginning of line, one sandwiched in b/w, and one from top to end of line
+- Tree-sitter for incremental markdown parsing? Prosemirror plugin to wrap the wasm bundle?
 - Allow theming/setting the color variables in UI?
 - Potentially replace prosemirror-view to be more lightweight and integrate cursor and selection "natively"?
+- Urls to share?

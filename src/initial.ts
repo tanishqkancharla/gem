@@ -44,7 +44,7 @@ const about = {
         },
         { type: "text", marks: [{ type: "bold" }], text: "*bold*" },
         { type: "text", text: ", " },
-        { type: "text", marks: [{ type: "italic" }], text: "__italic_,_" },
+        { type: "text", marks: [{ type: "italic" }], text: "_italic_," },
         { type: "text", text: " and " },
         { type: "text", marks: [{ type: "code" }], text: "`code`" },
         {

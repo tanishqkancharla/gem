@@ -16,6 +16,8 @@ const welcomes = [
   "Hello, hello!",
   "Why, welcome.",
   "A long, long time ago...",
+  "Go ahead, try me >:)",
+  "Just type it out.",
 ];
 
 const state = EditorState.create<typeof schema>({

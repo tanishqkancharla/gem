@@ -1,5 +1,7 @@
 // A file for initial content loading into the document. Checks if we're on about page or not, and returns the appropriate content
 
+import { TEST_CONTENT } from "./tests";
+
 const welcomes = [
   "What's on your mind?",
   "Hey, welcome to Gem :)",
@@ -82,6 +84,8 @@ const about = {
 export const initalContent =
   window.location.pathname === "/about"
     ? about
+    : TEST
+    ? TEST_CONTENT
     : {
         type: "doc",
         content: [

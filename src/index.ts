@@ -1,5 +1,5 @@
 import { schema } from "./schema";
-import { EditorState } from "prosemirror-state";
+import { EditorState, Transaction } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import { Node } from "prosemirror-model";
 import { undo, redo, history } from "prosemirror-history";
@@ -29,9 +29,17 @@ const state = EditorState.create<typeof schema>({
 
 const cursor = new Cursor();
 
+if (TEST) {
+  window.times = [];
+  window.transactions = [];
+}
+
 const view = new EditorView<typeof schema>(main, {
   state,
   dispatchTransaction(this, transaction) {
+    if (TEST) {
+      performance.mark("tr-begin");
+    }
     let newState = this.state.apply(transaction);
     if (newState.selection.empty && newState.selection.anchor == 1) {
       // Kind of a hack fix to remove all marks when at the beginning of a empty document
@@ -41,6 +49,11 @@ const view = new EditorView<typeof schema>(main, {
 
     cursor.resetTimeout();
     cursor.repositionToViewAnchor(this);
+    if (TEST) {
+      console.log(performance.measure("tr", "tr-begin"));
+      console.log(performance.getEntriesByType("measure"));
+      window.transactions.push(transaction);
+    }
   },
 });
 

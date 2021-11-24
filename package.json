@@ -7,7 +7,7 @@
     "clear": "mkdir -p dist && rm -rf dist/* && cp public/* dist",
     "dev": "npm run clear && ./dev.js",
     "build": "npm run clear && ./build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run clear && ./test.js"
   },
   "author": "Tanishq Kanchalra",
   "license": "ISC",

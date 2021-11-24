@@ -1,5 +1,4 @@
 @import "./prosemirror.css";
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 :root {
   --bg-color: #121416;
@@ -50,16 +49,22 @@ body::-webkit-scrollbar-thumb {
   font-family: var(--font);
   font-size: 1rem;
   line-height: 28px;
+  font-weight: 700;
+  text-decoration: none;
 
   color: #696969;
   top: 0;
   right: 0;
-  padding-top: 2rem;
-  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-right: 0.5rem;
   margin: 0 auto;
-  /* width: 80%;
-  max-width: 40rem; */
-  /* writing-mode: vertical-lr; */
+  writing-mode: vertical-lr;
+
+  transition-duration: var(--cursor-animation-duration);
+}
+
+.title:hover {
+  color: var(--accent-color);
 }
 
 main {
@@ -74,7 +79,8 @@ main {
 
 @media only screen and (min-width: 768px) {
   .title {
-    padding-top: 1rem;
+    padding-right: 1rem;
+    writing-mode: initial;
   }
   main {
     padding: 4rem 2rem;

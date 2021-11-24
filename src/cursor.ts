@@ -1,6 +1,7 @@
 import { EditorView } from "prosemirror-view";
 import { main } from "./index";
 
+// A cursor class to handle repositioning and deactivation timeouts
 export class Cursor {
   #el: HTMLDivElement;
   #cursorTimeout = 10000;

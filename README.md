@@ -25,17 +25,16 @@ To do (in priority):
   - Bullet lists
   - Numbered lists
   - Code block
-- Use estrella instead of the jank im doing
 - Cursor shape changes when marks are applied (fatter when bold, slant when italic, rectangle when code)
 - Default word-selection (when you start highlighting, it defaults to selecting the whole word your cursor is on).
 - Fix sentence-wrapping bug where it overflows sometimes (unreproducible as of yet, unless you paste in a huge text).
 - "Bookmarks" to leave your cursor in a position and travel back to.
-- Have an /about page that gets rendered into the editor
 
 Things I'm thinking of adding:
 
 - Table of contents generated from the headings for easy navigation?
-- Cursor fades and disappears after a while of inactivity?
+- Highlight and animate selection through 3 divs: one on bottom to beginning of line, one sandwiched in b/w, and one from top to end of line
+- Tree-sitter for incremental markdown parsing? Prosemirror plugin to wrap the wasm bundle?
 - Allow theming/setting the color variables in UI?
 - Potentially replace prosemirror-view to be more lightweight and integrate cursor and selection "natively"?
 - Urls to share?

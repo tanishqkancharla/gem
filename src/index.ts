@@ -32,7 +32,6 @@ const cursor = new Cursor();
 const view = new EditorView<typeof schema>(main, {
   state,
   dispatchTransaction(this, transaction) {
-    // Transactions should be dispatched in 60 fps =>
     let newState = this.state.apply(transaction);
     if (newState.selection.empty && newState.selection.anchor == 1) {
       // Kind of a hack fix to remove all marks when at the beginning of a empty document

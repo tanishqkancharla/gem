@@ -24,7 +24,7 @@ export class Cursor {
   resetTimeout() {
     this.activate();
     clearTimeout(this.#cursorTimeoutFn);
-    this.#cursorTimeoutFn = setTimeout(
+    this.#cursorTimeoutFn = window.setTimeout(
       () => this.deactivate(),
       this.#cursorTimeout
     );

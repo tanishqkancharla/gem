@@ -8,7 +8,7 @@ build({
   bundle: true,
   tslint: "on",
   define: {
-    TEST: true,
+    TEST: false,
   },
   sourcemap: true,
   minify: false,

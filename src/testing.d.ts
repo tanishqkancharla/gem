@@ -2,7 +2,7 @@
 export declare global {
   const TEST: boolean;
   interface Window {
-    times: number[];
+    times: PerformanceMeasure[];
     transactions: any[];
   }
 }

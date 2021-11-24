@@ -20,8 +20,8 @@ Please hit me up on [twitter](https://twitter.com/moonriseTK) if you like it or 
 
 To do (in priority):
 
-- Add performance testing so every transaction is dispatched in prosemirror within 1 frame (16 ms). Editing should be 60 fps
-- Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting. Just attach attributes to the para tag instead of actually making different blocks. That'll make things easier.
+- Add performance testing so every "small" transaction is dispatched in prosemirror within 1 frame. Editing should be 60 fps (that's 16 ms, but the goal is <10). Gem does really well here, and regular typing transactions rn are <1 ms. That's w/o syntax highlighting and a lot of other stuff, however, so I want to get performance metrics set up asap.
+- Basic markdown syntax highlighting through Prosemirror marks. Just attach attributes to the para tag instead of actually making different blocks. That'll make things easier.
   - Headings
   - Bullet lists
   - Numbered lists

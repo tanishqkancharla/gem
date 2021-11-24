@@ -5,9 +5,11 @@ import { Node } from "prosemirror-model";
 import { undo, redo, history } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { baseKeymap } from "prosemirror-commands";
+import { Step } from "prosemirror-transform";
 import { markdownInputRules, markdownKeyBindings } from "./markdown";
 import { Cursor } from "./cursor";
 import { initalContent } from "./initial";
+import { test } from "./tests";
 
 export const main = document.querySelector("main")!;
 
@@ -50,9 +52,10 @@ const view = new EditorView<typeof schema>(main, {
     cursor.resetTimeout();
     cursor.repositionToViewAnchor(this);
     if (TEST) {
-      console.log(performance.measure("tr", "tr-begin"));
-      console.log(performance.getEntriesByType("measure"));
-      window.transactions.push(transaction);
+      window.times.push(performance.measure("tr", "tr-begin"));
+      window.transactions.push({
+        steps: transaction.steps.map((x) => x.toJSON()),
+      });
     }
   },
 });
@@ -68,3 +71,19 @@ window.addEventListener("resize", () => {
 view.focus();
 
 cursor.repositionToViewAnchor(view);
+
+if (TEST) {
+  let _state = state;
+  test.map((x) => {
+    const tr = _state.tr;
+    x.steps.map((s) => tr.step(Step.fromJSON(schema, s)));
+    view.dispatch(tr);
+    _state = view.state;
+  });
+
+  console.log(
+    "AVERAGE TRANSACTION TIME: ",
+    window.times.map((x) => x.duration).reduce((a, b) => a + b) /
+      window.times.length
+  );
+}

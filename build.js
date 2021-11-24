@@ -6,7 +6,7 @@ build({
   outdir: "dist",
   bundle: true,
   define: {
-    TEST: true,
+    TEST: false,
   },
   minify: true,
 });

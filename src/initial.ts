@@ -2,7 +2,7 @@
 
 const welcomes = [
   "What's on your mind?",
-  "Hey, welcome to Editor :)",
+  "Hey, welcome to Gem :)",
   "Hello, hello!",
   "Why, welcome.",
   "A long, long time ago...",
@@ -18,7 +18,7 @@ const about = {
       content: [
         {
           type: "text",
-          text: "Hello! Welcome to Editor. Editor is a light-weight, performant, and minimal editor designed to be aesthetic and fun. ",
+          text: "Hello! Welcome to Gem. Gem is a light-weight, performant, and minimal editor designed to be aesthetic and fun. ",
         },
       ],
     },
@@ -71,7 +71,7 @@ const about = {
       content: [
         {
           type: "text",
-          text: "Please reach out to me if you like Editor, or have any ideas for features!",
+          text: "Please reach out to me if you like Gem, or have any ideas for features!",
         },
       ],
     },

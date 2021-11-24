@@ -1,5 +1,5 @@
 {
-  "name": "editor",
+  "name": "gem",
   "version": "1.0.0",
   "description": "A plain text editor, built with Prosemirror",
   "main": "src/index.ts",
@@ -9,7 +9,7 @@
     "build": "npm run clear && ./build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Tanishq Kanchalra",
   "license": "ISC",
   "dependencies": {
     "prosemirror-commands": "^1.1.12",

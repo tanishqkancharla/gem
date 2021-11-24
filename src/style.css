@@ -46,7 +46,7 @@ body::-webkit-scrollbar-thumb {
 main {
   padding: 4rem 2rem;
   flex: 1 1 auto;
-  width: 80%;
+  width: 100%;
   max-width: 40rem;
   margin: 0 auto;
   display: flex;

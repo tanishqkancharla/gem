@@ -10,13 +10,26 @@ import { Cursor } from "./cursor";
 
 export const main = document.body.children[0];
 
+const welcomes = [
+  "What's on your mind?",
+  "Hey, welcome to Editor :)",
+  "Hello, hello!",
+  "Why, welcome.",
+  "A long, long time ago...",
+];
+
 const state = EditorState.create<typeof schema>({
   doc: Node.fromJSON(schema, {
     type: "doc",
     content: [
       {
         type: "paragraph",
-        content: [{ type: "text", text: "What's on your mind?" }],
+        content: [
+          {
+            type: "text",
+            text: welcomes[Math.floor(Math.random() * welcomes.length)],
+          },
+        ],
       },
     ],
   }),

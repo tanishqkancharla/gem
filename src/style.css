@@ -1,5 +1,5 @@
 @import "./prosemirror.css";
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 :root {
   --bg-color: #121416;
@@ -45,28 +45,40 @@ body::-webkit-scrollbar-thumb {
 }
 
 .title {
-  font-family: "Playfair Display", serif;
-  color: var(--fg-color);
-  opacity: 0.4;
-  padding: 2rem;
-}
+  position: absolute;
 
-@media only screen and (min-width: 768px) {
-  .title {
-    position: absolute;
-    top: 4rem;
-    left: 2rem;
-  }
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 28px;
+
+  color: #696969;
+  top: 0;
+  right: 0;
+  padding-top: 2rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+  /* width: 80%;
+  max-width: 40rem; */
+  /* writing-mode: vertical-lr; */
 }
 
 main {
-  padding: 4rem 2rem;
+  padding: 2rem 2rem 4rem 2rem;
   flex: 1 1 auto;
   width: 80%;
   max-width: 40rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    padding-top: 1rem;
+  }
+  main {
+    padding: 4rem 2rem;
+  }
 }
 
 .cursor {

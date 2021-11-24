@@ -8,7 +8,7 @@ import { baseKeymap } from "prosemirror-commands";
 import { markdownInputRules, markdownKeyBindings } from "./markdown";
 import { Cursor } from "./cursor";
 
-export const main = document.body.children[0];
+export const main = document.querySelector("main")!;
 
 const state = EditorState.create<typeof schema>({
   doc: Node.fromJSON(schema, {

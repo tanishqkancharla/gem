@@ -40,7 +40,7 @@ const view = new EditorView<typeof schema>(main, {
     this.updateState(newState);
 
     cursor.resetTimeout();
-    cursor.repositionToViewAnchor(this);
+    cursor.repositionToViewHead(this);
   },
 });
 
@@ -49,9 +49,9 @@ view.root.addEventListener("focus", () => cursor.resetTimeout(), true);
 view.root.addEventListener("blur", () => cursor.deactivate(), true);
 
 window.addEventListener("resize", () => {
-  cursor.repositionToViewAnchor(view);
+  cursor.repositionToViewHead(view);
 });
 
 view.focus();
 
-cursor.repositionToViewAnchor(view);
+cursor.repositionToViewHead(view);

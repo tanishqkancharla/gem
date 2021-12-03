@@ -37,9 +37,10 @@ export class Cursor {
     }px)`;
   }
 
-  repositionToViewAnchor(view: EditorView) {
-    // If you do an all selection, the anchor gets set to 0...for some reason :/
-    const coords = view.coordsAtPos(Math.max(view.state.selection.anchor, 1));
+  repositionToViewHead(view: EditorView) {
+    // Note: If you do an all selection, the anchor gets set to the last position in the document
+    // which may be a location after the last block, so we reposition it to a location inside the last text block
+    const coords = view.coordsAtPos(Math.min(view.state.selection.head, view.state.doc.nodeSize - 3));
     this.reposition(coords.right, coords.top);
   }
 }

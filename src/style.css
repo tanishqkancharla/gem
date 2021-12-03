@@ -1,5 +1,3 @@
-@import "./prosemirror.css";
-
 :root {
   --bg-color: #121416;
   --accent-color: #17d49b;
@@ -108,15 +106,18 @@ main {
   transition: opacity 0.5s;
 }
 
-.ProseMirror {
+.cm-editor {
   flex: 1 1 auto;
+}
+
+.ͼ2 .cm-content {
+  caret-color: transparent;
   font-family: var(--font);
   font-size: 1rem;
   line-height: 28px;
-  caret-color: transparent;
 }
 
-.ProseMirror:focus {
+.ͼ1.cm-editor.cm-focused {
   outline: none;
 }
 
@@ -126,11 +127,6 @@ main {
 
 ::-moz-selection {
   background-color: var(--selection-bg-color);
-}
-
-.ProseMirror p {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .ProseMirror p code {

@@ -20,8 +20,8 @@ Please hit me up on [twitter](https://twitter.com/moonriseTK) if you like it or 
 
 To do (in priority):
 
-- Add performance testing so every transaction is dispatched in prosemirror within 1 frame (16 ms). Editing should be 60 fps
-- Basic markdown through Prosemirror marks. Don't remove formatting (WYSIWYG), just style it with the formatting. Just attach attributes to the para tag instead of actually making different blocks. That'll make things easier.
+- Switch to using codemirror so that syntax highlighting becomes easier to dispatch
+- Basic markdown syntax highlighting.
   - Headings
   - Bullet lists
   - Numbered lists

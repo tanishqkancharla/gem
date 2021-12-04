@@ -116,6 +116,8 @@ main {
   font-family: var(--font);
   font-size: var(--font-size);
   line-height: 28px;
+
+  white-space: normal;
 }
 
 .ͼ1.cm-editor.cm-focused {

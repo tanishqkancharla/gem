@@ -1,5 +1,3 @@
-@import "./prosemirror.css";
-
 :root {
   --bg-color: #121416;
   --accent-color: #17d49b;
@@ -7,6 +5,7 @@
   --selection-bg-color: rgba(23, 212, 155, 0.4);
   --cursor-animation-duration: 80ms;
   --font: SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font-size: 16px;
 }
 
 *,
@@ -47,7 +46,7 @@ body::-webkit-scrollbar-thumb {
   position: absolute;
 
   font-family: var(--font);
-  font-size: 1rem;
+  font-size: var(--font-size);
   line-height: 28px;
   font-weight: 700;
   text-decoration: none;
@@ -108,15 +107,18 @@ main {
   transition: opacity 0.5s;
 }
 
-.ProseMirror {
+.cm-editor {
   flex: 1 1 auto;
-  font-family: var(--font);
-  font-size: 1rem;
-  line-height: 28px;
-  caret-color: transparent;
 }
 
-.ProseMirror:focus {
+.ͼ2 .cm-content {
+  caret-color: transparent;
+  font-family: var(--font);
+  font-size: var(--font-size);
+  line-height: 28px;
+}
+
+.ͼ1.cm-editor.cm-focused {
   outline: none;
 }
 
@@ -126,11 +128,6 @@ main {
 
 ::-moz-selection {
   background-color: var(--selection-bg-color);
-}
-
-.ProseMirror p {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .ProseMirror p code {

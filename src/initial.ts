@@ -80,19 +80,4 @@ const about = {
   ],
 };
 export const initalContent =
-  window.location.pathname === "/about"
-    ? about
-    : {
-        type: "doc",
-        content: [
-          {
-            type: "paragraph",
-            content: [
-              {
-                type: "text",
-                text: welcomes[Math.floor(Math.random() * welcomes.length)],
-              },
-            ],
-          },
-        ],
-      };
+  welcomes[Math.floor(Math.random() * welcomes.length)];

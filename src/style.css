@@ -99,7 +99,7 @@ main {
   background-color: var(--accent-color);
 
   transform: translate(4rem, 2rem);
-  transition: transform var(--cursor-animation-duration), opacity 0.1s;
+  transition: transform var(--cursor-animation-duration) ease-out, opacity 0.1s;
 }
 
 .cursor.inactive {

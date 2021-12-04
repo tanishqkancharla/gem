@@ -58,7 +58,7 @@ export const cursorPlugin = ViewPlugin.fromClass(
         read: (view) => {
           // If you do an all selection, the anchor gets set to 0...for some reason :/
           const coords = view.coordsAtPos(
-            Math.max(view.state.selection.ranges[0].anchor, 1)
+            Math.max(view.state.selection.ranges[0].head, 1)
           );
           if (coords) {
             cursor.reposition(coords.right, coords.top);

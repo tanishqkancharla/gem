@@ -5,6 +5,7 @@
   --selection-bg-color: rgba(23, 212, 155, 0.4);
   --cursor-animation-duration: 80ms;
   --font: SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font-size: 16px;
 }
 
 *,
@@ -45,7 +46,7 @@ body::-webkit-scrollbar-thumb {
   position: absolute;
 
   font-family: var(--font);
-  font-size: 1rem;
+  font-size: var(--font-size);
   line-height: 28px;
   font-weight: 700;
   text-decoration: none;
@@ -113,7 +114,7 @@ main {
 .ͼ2 .cm-content {
   caret-color: transparent;
   font-family: var(--font);
-  font-size: 1rem;
+  font-size: var(--font-size);
   line-height: 28px;
 }
 

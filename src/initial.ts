@@ -60,7 +60,7 @@ const about = {
       content: [
         {
           type: "text",
-          text: "It's being developed by [Tanishq Kancharla](https://moonrise.tk) (me!) and open-sourced on [Github](https://github.com/moonrise-tk/editor). Have a look at the README for more information.",
+          text: "It's being developed by [Tanishq Kancharla](https://moonrise.tk) (me!) and open-sourced on [Github](https://github.com/moonrise-tk/gem). Have a look at the README for more information.",
         },
       ],
     },

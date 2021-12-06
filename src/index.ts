@@ -6,7 +6,7 @@ import { undo, redo, history } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { baseKeymap } from "prosemirror-commands";
 import { markdownInputRules, markdownKeyBindings } from "./markdown";
-import { Cursor } from "./cursor";
+import { CursorPlugin } from "./cursor";
 import { initalContent } from "./initial";
 
 export const main = document.querySelector("main")!;
@@ -24,34 +24,12 @@ const state = EditorState.create<typeof schema>({
     }),
     keymap<typeof schema>(baseKeymap),
     markdownInputRules,
+    CursorPlugin,
   ],
 });
 
-const cursor = new Cursor();
-
 const view = new EditorView<typeof schema>(main, {
   state,
-  dispatchTransaction(this, transaction) {
-    let newState = this.state.apply(transaction);
-    if (newState.selection.empty && newState.selection.anchor == 1) {
-      // Kind of a hack fix to remove all marks when at the beginning of a empty document
-      newState = newState.apply(newState.tr.setStoredMarks([]));
-    }
-    this.updateState(newState);
-
-    cursor.resetTimeout();
-    cursor.repositionToViewAnchor(this);
-  },
-});
-
-view.root.addEventListener("focus", () => cursor.resetTimeout(), true);
-
-view.root.addEventListener("blur", () => cursor.deactivate(), true);
-
-window.addEventListener("resize", () => {
-  cursor.repositionToViewAnchor(view);
 });
 
 view.focus();
-
-cursor.repositionToViewAnchor(view);

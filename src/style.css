@@ -1,5 +1,5 @@
 @import "./prosemirror.css";
-@import "./roseTheme.css";
+@import "./macTheme.css";
 @import "./syntax.css";
 
 *,
@@ -93,7 +93,7 @@ main {
 .ProseMirror {
   flex: 1 1 auto;
   font-family: var(--font);
-  font-size: 1rem;
+  font-size: var(--font-size);
   line-height: 28px;
   caret-color: transparent;
 }
@@ -113,9 +113,4 @@ main {
 .ProseMirror p {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.ProseMirror p code {
-  color: #a0a0a0;
-  font: var(--font);
 }

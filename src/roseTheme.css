@@ -3,7 +3,8 @@
   --accent-color: #f9ddc7;
   --fg-color: #e6e6e6;
   --secondary-fg-color: #717479;
-  --selection-bg-color: rgba(249, 221, 199, 0.4);
+  --selection-bg-color: rgba(249, 221, 199, 0.5);
   --cursor-animation-duration: 80ms;
-  --font: SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font: -apple-system, sans-serif;
+  --font-size: 1rem;
 }

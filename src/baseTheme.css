@@ -6,4 +6,5 @@
   --selection-bg-color: rgba(23, 212, 155, 0.4);
   --cursor-animation-duration: 80ms;
   --font: SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font-size: 1rem;
 }

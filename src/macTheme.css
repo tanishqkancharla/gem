@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+@font-face {
+  font-family: Chicago;
+  src: url(./ChiKareGo.ttf);
+}
+
+:root {
+  --bg-color: white;
+  --accent-color: rgb(0, 153, 255);
+  --fg-color: black;
+  --secondary-fg-color: #717479;
+  --selection-bg-color: rgba(0, 153, 255, 0.4);
+  --cursor-animation-duration: 80ms;
+  --font: Chicago, sans-serif;
+  --font-size: 24px;
+}

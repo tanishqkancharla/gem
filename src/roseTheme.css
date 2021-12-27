@@ -1,0 +1,9 @@
+:root {
+  --bg-color: #000000;
+  --accent-color: #f9ddc7;
+  --fg-color: #e6e6e6;
+  --secondary-fg-color: #717479;
+  --selection-bg-color: rgba(249, 221, 199, 0.4);
+  --cursor-animation-duration: 80ms;
+  --font: SFMono-Regular, ui-monospace, Menlo, monospace;
+}

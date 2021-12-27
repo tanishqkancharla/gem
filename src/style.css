@@ -1,13 +1,6 @@
 @import "./prosemirror.css";
-
-:root {
-  --bg-color: #121416;
-  --accent-color: #17d49b;
-  --fg-color: #efefef;
-  --selection-bg-color: rgba(23, 212, 155, 0.4);
-  --cursor-animation-duration: 80ms;
-  --font: SFMono-Regular, ui-monospace, Menlo, monospace;
-}
+@import "./roseTheme.css";
+@import "./syntax.css";
 
 *,
 *::before,

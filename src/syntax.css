@@ -1,0 +1,30 @@
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.code {
+  color: gray;
+}
+
+.heading-1 {
+  color: white;
+  font-weight: bold;
+}
+
+.heading-2 {
+  color: white;
+  font-weight: bold;
+}
+
+.heading-3 {
+  color: white;
+  font-weight: bold;
+}
+
+.divider {
+  color: var(--secondary-fg-color);
+}

@@ -19,21 +19,10 @@ html {
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  scrollbar-color: var(--accent-color);
   margin: 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-body::-webkit-scrollbar {
-  width: 5px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-  border-radius: 6px;
 }
 
 .title {
@@ -45,7 +34,7 @@ body::-webkit-scrollbar-thumb {
   font-weight: 700;
   text-decoration: none;
 
-  color: #696969;
+  color: var(--secondary-fg-color);
   top: 0;
   right: 0;
   padding-top: 1rem;

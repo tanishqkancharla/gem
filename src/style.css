@@ -28,9 +28,9 @@ body {
 .title {
   position: absolute;
 
-  font-family: var(--font);
+  font-family: SFMono-Regular, ui-monospace, Menlo, monospace;
   font-size: 1rem;
-  line-height: 28px;
+  line-height: var(--line-height);
   font-weight: 700;
   text-decoration: none;
 
@@ -53,7 +53,7 @@ main {
   padding: 2rem 2rem 4rem 2rem;
   flex: 1 1 auto;
   width: 100%;
-  max-width: 40rem;
+  max-width: 42rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -73,16 +73,25 @@ main {
   position: absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
 
-  width: 4px;
-  height: 28px;
+  width: 3px;
+  height: var(--line-height);
 
   opacity: 1;
   border-radius: 4px;
   background-color: var(--accent-color);
 
   transform: translate(4rem, 2rem);
-  transition: transform var(--cursor-animation-duration), opacity 0.1s;
+  transition: all var(--cursor-animation-duration) ease-out, opacity 0.1s;
+}
+
+.cursor.split {
+  width: 3px;
+}
+
+.cursor.split.head {
+  transition: none;
 }
 
 .cursor.inactive {
@@ -93,8 +102,10 @@ main {
 .ProseMirror {
   flex: 1 1 auto;
   font-family: var(--font);
-  font-size: 1rem;
-  line-height: 28px;
+
+  font-size: 1.2rem;
+  line-height: var(--line-height);
+
   caret-color: transparent;
 }
 
@@ -111,11 +122,11 @@ main {
 }
 
 .ProseMirror p {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .ProseMirror p code {
-  color: #a0a0a0;
+  color: var(--secondary-fg-color);
   font: var(--font);
 }

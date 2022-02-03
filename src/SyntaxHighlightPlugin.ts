@@ -8,6 +8,7 @@ const nodes = [
   { match: /^## (.*)$/g, class: "heading-2" },
   { match: /^### (.*)$/g, class: "heading-3" },
   { match: /^---$/g, class: "divider" },
+  { match: /^```$/g, class: "code-block" },
 ];
 
 const marks = [

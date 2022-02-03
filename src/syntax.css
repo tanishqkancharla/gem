@@ -7,7 +7,11 @@
 }
 
 .code {
-  color: gray;
+  color: var(--secondary-fg-color);
+}
+
+.code-block {
+  color: var(--secondary-fg-color);
 }
 
 .heading-1 {

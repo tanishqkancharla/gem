@@ -9,7 +9,23 @@ const welcomes = [
   "Go ahead, try me >:)",
   "Just type it out.",
 ];
-const about = {
+
+const welcomeDoc = {
+  type: "doc",
+  content: [
+    {
+      type: "paragraph",
+      content: [
+        {
+          type: "text",
+          text: welcomes[Math.floor(Math.random() * welcomes.length)],
+        },
+      ],
+    },
+  ],
+};
+
+const aboutDoc = {
   type: "doc",
   content: [
     {
@@ -80,19 +96,4 @@ const about = {
   ],
 };
 export const initalContent =
-  window.location.pathname === "/about"
-    ? about
-    : {
-        type: "doc",
-        content: [
-          {
-            type: "paragraph",
-            content: [
-              {
-                type: "text",
-                text: welcomes[Math.floor(Math.random() * welcomes.length)],
-              },
-            ],
-          },
-        ],
-      };
+  window.location.pathname === "/about" ? aboutDoc : welcomeDoc;

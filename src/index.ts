@@ -4,11 +4,12 @@ import { keymap } from "prosemirror-keymap";
 import { Node } from "prosemirror-model";
 import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
-import { CursorPlugin } from "./cursor";
+import { CursorPlugin } from "./CursorPlugin";
 import { initalContent } from "./initial";
-import { markdownKeyBindings } from "./markdown";
+import { markdownKeyBindings } from "./MarkdownPlugin";
+import { SaveStatePlugin } from "./SaveStatePlugin";
 import { schema } from "./schema";
-import { SyntaxHighlightPlugin } from "./syntax";
+import { SyntaxHighlightPlugin } from "./SyntaxHighlightPlugin";
 
 export const main = document.querySelector("main")!;
 
@@ -26,6 +27,7 @@ const state = EditorState.create<typeof schema>({
     keymap<typeof schema>(baseKeymap),
     SyntaxHighlightPlugin,
     // markdownInputRules,
+    SaveStatePlugin,
     CursorPlugin,
   ],
 });

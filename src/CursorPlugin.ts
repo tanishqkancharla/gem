@@ -120,14 +120,18 @@ export const CursorPlugin = new Plugin<void, typeof schema>({
       cursor.reposition(view);
     });
 
-    view.root.addEventListener("focus", () => cursor.resetTimeout(), true);
-    view.root.addEventListener("blur", () => cursor.deactivate(), true);
+    view.root.addEventListener("focus", cursor.resetTimeout, true);
+    view.root.addEventListener("blur", cursor.deactivate, true);
 
     cursor.reposition(view);
     return {
       update: (view) => {
         cursor.resetTimeout();
         cursor.reposition(view);
+      },
+      destroy: () => {
+        view.root.removeEventListener("focus", cursor.resetTimeout, true);
+        view.root.removeEventListener("blur", cursor.deactivate, true);
       },
     };
   },

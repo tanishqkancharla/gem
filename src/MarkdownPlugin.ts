@@ -102,4 +102,4 @@ export const markdownKeyBindings: Keymap<typeof schema> = {
   // "Mod-b": toggleBold,
   // "Mod-i": toggleItalic,
 };
-export const markdownInputRules = inputRules({ rules: [bold, italic, code] });
+export const MarkdownPlugin = inputRules({ rules: [bold, italic, code] });

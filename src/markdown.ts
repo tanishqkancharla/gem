@@ -41,9 +41,20 @@ const bold = new InputRule<typeof schema>(
 
 // const toggleBold: Command<typeof schema> = (state, dispatch) => {
 //   if (dispatch) {
-//     const tr = state.tr;
-//     tr.insertText("*");
-//     dispatch(tr);
+//     const selection = state.selection;
+//     if (selection instanceof TextSelection) {
+//       const tr = state.tr;
+//       const text = selection.content();
+
+//       if (selection.head === selection.anchor) {
+//         tr.insertText("**");
+//         tr.setSelection(TextSelection.create(tr.doc, selection.anchor + 1));
+//       } else {
+//         tr.insertText();
+//       }
+
+//       dispatch(tr);
+//     }
 //   }
 //   return false;
 // };

@@ -37,9 +37,7 @@ class Cursor {
 
   // In viewport coordinates
   reposition(x: number, y: number): Cursor {
-    this.#el.style.transform = `translate(${x - 2}px, ${
-      window.scrollY + y - 4
-    }px)`;
+    this.#el.style.transform = `translate(${x - 2}px, ${window.scrollY + y}px)`;
     return this;
   }
 

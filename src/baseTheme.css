@@ -5,5 +5,5 @@
   --secondary-fg-color: #696969;
   --selection-bg-color: rgba(23, 212, 155, 0.4);
   --cursor-animation-duration: 80ms;
-  --font: SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font: "Source Sans Pro", SFMono-Regular, ui-monospace, Menlo, monospace;
 }

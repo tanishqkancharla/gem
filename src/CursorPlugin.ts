@@ -47,7 +47,7 @@ class Cursor {
   // In viewport coordinates
   repositionAnchor(x: number, y: number): Cursor {
     this.#anchorEl.style.transform = `translate(${x - 2}px, ${
-      window.scrollY + y
+      window.scrollY + y -2
     }px)`;
     return this;
   }
@@ -55,7 +55,7 @@ class Cursor {
   // In viewport coordinates
   repositionHead(x: number, y: number): Cursor {
     this.#headEl.style.transform = `translate(${x - 2}px, ${
-      window.scrollY + y
+      window.scrollY + y -2
     }px)`;
     return this;
   }

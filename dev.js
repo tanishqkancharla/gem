@@ -2,12 +2,12 @@
 const { build } = require("estrella");
 
 build({
-  entry: ["./src/index.ts", "./src/style.css"],
-  outdir: "dist",
-  watch: true,
-  bundle: true,
-  tslint: "on",
-  sourcemap: "inline",
-  minify: false,
-  run: "npx serve -n -l 3000 dist",
+	entry: ["./src/index.tsx", "./src/style.css"],
+	outdir: "dist",
+	watch: true,
+	bundle: true,
+	tslint: "on",
+	sourcemap: "inline",
+	minify: false,
+	run: "npx serve -n -l 3000 dist",
 });

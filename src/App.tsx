@@ -1,58 +1,64 @@
-import React, { useMemo, useRef, useState } from "react";
-import styled from "styled-components";
-import { parseTK, TKDoc } from "tk-parser";
-import { Block } from "./Block";
-import { backgroundColor, bodyTextColor, borderColor } from "./styles/vars";
+import { css } from "goober";
+import { baseKeymap } from "prosemirror-commands";
+import { keymap } from "prosemirror-keymap";
+import { EditorState, Transaction } from "prosemirror-state";
+import { EditorProps, EditorView } from "prosemirror-view";
+import React, { useCallback, useMemo, useState } from "react";
+import { UIEditor } from "./EditorView";
+import { schema } from "./schema";
+import { backgroundColor } from "./styles/vars";
+import { TKParsePlugin } from "./TKParsePlugin";
 
-const StyledApp = styled.div`
+const appClass = css`
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
 	background-color: ${backgroundColor};
-	margin: 0;
+	margin: auto;
 	width: 100vw;
 	height: 100vh;
 	padding: 30px;
 `;
 
-const StyledEditor = styled.div`
-	width: 50%;
-	border: 1.5px solid ${borderColor};
-	border-radius: 3px;
-	color: ${bodyTextColor};
-	padding: 6px;
-
-	:focus {
-		outline: none;
-	}
+const editorClass = css`
+	outline: none;
 `;
 
-export function App() {
-	const [content, setContent] = useState("");
-
-	const doc = useMemo(() => parseTK(content), [content]);
-
-	const ref = useRef<HTMLDivElement>(null);
-
-	return (
-		<StyledApp>
-			<StyledEditor
-				ref={ref}
-				contentEditable
-				onKeyUp={(event) => {
-					setContent(ref.current?.innerText || "");
-				}}
-			></StyledEditor>
-			<Doc doc={doc} />
-		</StyledApp>
-	);
+function createEditorState() {
+	return EditorState.create({
+		schema,
+		plugins: [TKParsePlugin, keymap(baseKeymap)],
+	});
 }
-function Doc(props: { doc: TKDoc }) {
+
+export function App(props: {}) {
+	const [state, setState] = useState(createEditorState);
+
+	const dispatchTransaction = useCallback(
+		(view: EditorView, tr: Transaction) => {
+			const nextState = view.state.apply(tr);
+			setState(nextState);
+		},
+		[]
+	);
+
+	const editorProps = useMemo(
+		(): EditorProps => ({
+			attributes: {
+				class: editorClass,
+			},
+		}),
+		[]
+	);
+
 	return (
-		<div style={{ width: "50%" }}>
-			{props.doc.blocks.map((block, index) => (
-				<Block key={index} block={block} />
-			))}
+		<div className={appClass}>
+			<UIEditor
+				editorState={state}
+				dispatchTransaction={dispatchTransaction}
+				focused
+				editorProps={editorProps}
+			/>
 		</div>
 	);
 }

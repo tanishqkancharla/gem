@@ -8,6 +8,7 @@ build({
 	bundle: true,
 	tslint: "on",
 	sourcemap: "inline",
+	sourcesContent: true,
 	minify: false,
-	run: "npx serve -n -l 3000 dist",
+	run: "npx serve -n -l 3000",
 });

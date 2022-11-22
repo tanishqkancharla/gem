@@ -5,6 +5,8 @@ import { App } from "./App";
 export const main = document.querySelector("main")!;
 
 function setupReactApp() {
+	// const initialContent = localStorage.getItem("content") || undefined;
+
 	ReactDOM.render(<App />, main);
 }
 

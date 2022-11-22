@@ -1,14 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import { css } from "goober";
 import {
 	accentColor,
 	bodyTextColor,
 	borderColor,
 	transitionDurationSm,
 } from "../styles/vars";
-import { P } from "./Paragraph";
 
-const BlockLinkA = styled.a`
+export const blockLinkClass = css`
 	color: ${bodyTextColor};
 
 	border-style: solid;
@@ -41,12 +39,3 @@ const BlockLinkA = styled.a`
 		border-color: ${accentColor};
 	}
 `;
-
-export function BlockLink(props: { content: string; url: string }) {
-	const { content, url } = props;
-	return (
-		<P>
-			<BlockLinkA href={url}>{content}</BlockLinkA>
-		</P>
-	);
-}

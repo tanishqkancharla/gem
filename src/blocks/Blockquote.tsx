@@ -1,8 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import { css } from "goober";
 import { accentColor, articleItemMargin } from "../styles/vars";
 
-const _Blockquote = styled.blockquote`
+export const blockquoteClass = css`
 	margin: 0;
 	margin-top: ${articleItemMargin};
 	margin-bottom: ${articleItemMargin};
@@ -13,6 +12,9 @@ const _Blockquote = styled.blockquote`
 	padding-left: 1rem;
 `;
 
-export function Blockquote(props: { content: JSX.Element | JSX.Element[] }) {
-	return <_Blockquote>{props.content}</_Blockquote>;
-}
+export const blockquoteSepClass = css`
+	display: inline-block;
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding-right: 0.6rem;
+`;

@@ -108,3 +108,16 @@ export function CodeBlock(props: { lang?: string; html: string }) {
 		</Pre>
 	);
 }
+
+export function NotHighlightedCodeBlock(props: {
+	lang?: string;
+	children: React.ReactNode;
+}) {
+	const { lang } = props;
+
+	return (
+		<Pre className={`lang-${lang}`}>
+			<Code>{props.children}</Code>
+		</Pre>
+	);
+}
